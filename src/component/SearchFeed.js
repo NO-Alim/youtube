@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchAPI } from '../utils/fetchAPI';
-import { Typography, Box } from '@mui/material';
 import Videos from './Videos';
 const SearchFeed = () => {
   const [videos, setVideos] = useState(null);
@@ -15,22 +14,14 @@ const SearchFeed = () => {
   }, [searchTerm]);
 
   return (
-    <Box p={2} minHeight="95vh">
-      <Typography
-        variant="h4"
-        fontWeight={900}
-        color="white"
-        mb={3}
-        ml={{ sm: '100px' }}
-      >
-        Search Results for{' '}
-        <span style={{ color: '#FC1503' }}>{searchTerm}</span> videos
-      </Typography>
-      <Box display="flex">
-        <Box sx={{ mr: { sm: '100px' } }} />
-        {<Videos videos={videos} />}
-      </Box>
-    </Box>
+    <div className=" min-h-[95vh] mt-[10vh] flex flex-col px-10">
+      <h1 className="text-2xl px-5 mt-5">
+        Search Results for <span className=" text-[red]">{searchTerm}</span>{' '}
+        videos
+      </h1>
+      <div />
+      <div>{<Videos videos={videos} size="big" />}</div>
+    </div>
   );
 };
 
